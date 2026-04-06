@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethio China Friendship Clinic</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.7);
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    backdrop-filter: blur(10px);
+}
+
+nav h1{
+    color:#00d4ff;
+    font-size:22px;
+}
+
+nav a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00d4ff;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:url('clinic.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+    position:relative;
+    color:white;
+    animation:fadeIn 2s ease;
+}
+
+.hero h2{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#00d4ff;
+    color:black;
+    border-radius:30px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:white;
+    transform:scale(1.1);
+}
+
+/* SECTION */
+section{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.section-title{
+    font-size:32px;
+    margin-bottom:30px;
+    color:#00aaff;
+}
+
+/* CARDS */
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    width:250px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.3s;
+    transform:translateY(50px);
+    opacity:0;
+}
+
+.card.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+/* MAP */
+.map{
+    width:100%;
+    height:300px;
+    border:none;
+    border-radius:15px;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+    <h1>Ethio China Clinic</h1>
+    <div>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-content">
+        <h2>Ethio China Friendship Clinic</h2>
+        <p>Quality Healthcare You Can Trust</p>
+        <a href="tel:0927838888" class="btn">Call Now</a>
+    </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="cards">
+        <div class="card">General Checkup</div>
+        <div class="card">Laboratory Services</div>
+        <div class="card">Emergency Care</div>
+        <div class="card">Pharmacy</div>
+    </div>
+</section>
+
+<!-- MAP -->
+<section>
+    <h2 class="section-title">Our Location</h2>
+    <iframe class="map"
+    src="https://maps.google.com/maps?q=8.987105,38.775285&z=15&output=embed">
+    </iframe>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p>📞 092 783 8888</p>
+    <p>Addis Ababa, Ethiopia</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 Ethio China Friendship Clinic
+</footer>
+
+<script>
+/* SCROLL ANIMATION */
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', ()=>{
+    cards.forEach(card=>{
+        const rect = card.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 50){
+            card.classList.add('show');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
