@@ -10,7 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 body{
@@ -35,18 +35,13 @@ nav{
 
 nav h1{
     color:black;
-    font-size:22px;
+    font-size:20px;
 }
 
 nav a{
     color:black;
     margin-left:20px;
     text-decoration:none;
-    transition:0.3s;
-}
-
-nav a:hover{
-    text-decoration:underline;
 }
 
 /* HERO */
@@ -60,29 +55,38 @@ nav a:hover{
     position:relative;
 }
 
+/* LIGHT overlay so logo shows */
 .hero::after{
     content:"";
     position:absolute;
     width:100%;
     height:100%;
-    background:rgba(255,255,255,0.85);
+    background:rgba(255,255,255,0.7);
 }
 
 .hero-content{
     position:relative;
-    color:black;
-    animation:fadeIn 2s ease;
+    z-index:2;
 }
 
-.hero h2{
-    font-size:45px;
+/* LOGO */
+.logo{
+    width:120px;
     margin-bottom:15px;
 }
 
-.hero p{
-    font-size:18px;
+/* TEXT */
+.hero h2{
+    font-size:40px;
+    margin-bottom:10px;
+    color:black;
 }
 
+.hero p{
+    color:black;
+}
+
+/* BUTTON */
 .btn{
     display:inline-block;
     margin-top:20px;
@@ -91,24 +95,18 @@ nav a:hover{
     color:white;
     border-radius:30px;
     text-decoration:none;
-    transition:0.3s;
+    cursor:pointer;
 }
 
-.btn:hover{
-    background:#333;
-    transform:scale(1.1);
-}
-
-/* SECTION */
+/* SECTIONS */
 section{
     padding:80px 20px;
     text-align:center;
 }
 
 .section-title{
-    font-size:32px;
-    margin-bottom:30px;
-    color:black;
+    font-size:30px;
+    margin-bottom:20px;
 }
 
 /* CARDS */
@@ -121,23 +119,18 @@ section{
 
 .card{
     background:white;
-    color:black;
-    padding:25px;
-    width:250px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-    transition:0.3s;
-    transform:translateY(50px);
+    padding:20px;
+    width:230px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
     opacity:0;
+    transform:translateY(40px);
+    transition:0.5s;
 }
 
 .card.show{
-    transform:translateY(0);
     opacity:1;
-}
-
-.card:hover{
-    transform:scale(1.05);
+    transform:translateY(0);
 }
 
 /* MAP */
@@ -145,22 +138,20 @@ section{
     width:100%;
     height:300px;
     border:none;
-    border-radius:15px;
 }
 
 /* FOOTER */
 footer{
     background:white;
-    color:black;
-    padding:30px;
-    text-align:center;
+    padding:20px;
     border-top:1px solid #ddd;
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
+/* RESPONSIVE */
+@media(max-width:600px){
+    .hero h2{
+        font-size:28px;
+    }
 }
 </style>
 </head>
@@ -179,9 +170,16 @@ footer{
 <!-- HERO -->
 <div class="hero">
     <div class="hero-content">
+
+        <!-- LOGO -->
+        <img src="logo.png" alt="Clinic Logo" class="logo">
+
         <h2>Ethio China Friendship Clinic</h2>
         <p>Quality Healthcare You Can Trust</p>
-        <a href="tel:0927838888" class="btn">Call Now</a>
+
+        <!-- FIXED CALL BUTTON -->
+        <a href="tel:+251927838888" class="btn">Call Now</a>
+
     </div>
 </div>
 
@@ -221,8 +219,7 @@ const cards = document.querySelectorAll('.card');
 
 window.addEventListener('scroll', ()=>{
     cards.forEach(card=>{
-        const rect = card.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 50){
+        if(card.getBoundingClientRect().top < window.innerHeight - 50){
             card.classList.add('show');
         }
     });
